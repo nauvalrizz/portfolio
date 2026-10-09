@@ -940,6 +940,8 @@
       #about-window .file-label::after{content:"ABOUT ME";font-size:10px}
       #about-window .about-identity{grid-area:identity;display:grid;grid-template-columns:100px minmax(0,1fr);align-items:center;gap:14px;margin:0 0 18px;padding-bottom:18px;border-bottom:1px dotted var(--mid)}
       #about-window .portrait,#about-window.window.maximized .portrait{width:100px;height:112px;min-height:0;padding:8px;object-fit:cover}
+      #about-window .portrait:has(> .portrait-img),#about-window.window.maximized .portrait:has(> .portrait-img){padding:0;background:none!important;width:100px;height:112px;overflow:hidden}
+      #about-window .portrait:has(> .portrait-img) .portrait-img{width:100%;height:100%;object-fit:cover;object-position:top center}
       #about-window .about-identity-copy{display:flex;min-width:0;flex-direction:column;gap:4px}
       #about-window .about-identity-copy strong{font:700 clamp(25px,8vw,30px)/1.02 var(--reading);letter-spacing:-.025em}
       #about-window .about-identity-copy span{font:700 14px/1.3 var(--reading);color:var(--active-hi)}
