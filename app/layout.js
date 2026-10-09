@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="theme-dark" suppressHydrationWarning>
       <body>
         {children}
-        <Script src="/js/portfolio.js" strategy="afterInteractive" />
+        <Script src="/js/portfolio.js?v=20261009c" strategy="afterInteractive" />
       </body>
     </html>
   );
