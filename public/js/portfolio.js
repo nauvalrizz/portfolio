@@ -2,11 +2,6 @@
     (function(){if(window.__nopalPortfolioInit)return;window.__nopalPortfolioInit=true;
       
 
-      // Portrait unmask: tap toggles on touch devices
-      document.addEventListener('click',function(e){
-        var p=e.target.closest&&e.target.closest('.portrait-unmask');
-        if(p)p.classList.toggle('unmasked');
-      });
       var desktop=document.getElementById('desktop');
       var windows=Array.prototype.slice.call(document.querySelectorAll('.window'));
       var topZ=10;
