@@ -1,5 +1,5 @@
 
-    (function(){
+    (function(){if(window.__nopalPortfolioInit)return;window.__nopalPortfolioInit=true;
       var desktop=document.getElementById('desktop');
       var windows=Array.prototype.slice.call(document.querySelectorAll('.window'));
       var topZ=10;
