@@ -9,7 +9,8 @@
         if(!portrait)return;
         var robot=portrait.querySelector('.portrait-robot');
         if(!robot)return;
-        var idleTimer=null,isRobot=false;
+        var idleTimer=null,isRobot=true;
+        robot.style.opacity='1';
         function morph(toRobot,duration){
           robot.style.transition='opacity '+duration+'ms ease-in-out';
           robot.style.opacity=toRobot?'1':'0';
@@ -22,8 +23,8 @@
           },7000);
         }
         function stopIdle(){if(idleTimer){clearInterval(idleTimer);idleTimer=null;}}
-        portrait.addEventListener('mouseenter',function(){stopIdle();morph(true,1400);});
-        portrait.addEventListener('mouseleave',function(){morph(false,1400);setTimeout(startIdle,2500);});
+        portrait.addEventListener('mouseenter',function(){stopIdle();morph(false,1400);});
+        portrait.addEventListener('mouseleave',function(){morph(true,1400);setTimeout(startIdle,2500);});
         portrait.addEventListener('click',function(){
           stopIdle();
           morph(!isRobot,1400);

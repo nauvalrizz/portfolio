@@ -312,7 +312,7 @@
     .portrait-idle{aspect-ratio:3/3.6}
     .portrait-idle .portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
     .portrait-idle .portrait-human{opacity:1;z-index:1}
-    .portrait-idle .portrait-robot{opacity:0;z-index:2}
+    .portrait-idle .portrait-robot{opacity:1;z-index:2}
     @media (prefers-reduced-motion:reduce){.portrait-idle .portrait-robot{display:none}}
     .portrait-img{display:block;width:100%;height:100%;min-height:170px;max-height:260px;object-fit:cover;object-position:top center}
     /* Real photo: remove placeholder padding/stripes, fill frame cleanly */
