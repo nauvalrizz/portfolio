@@ -2,6 +2,35 @@
     (function(){if(window.__nopalPortfolioInit)return;window.__nopalPortfolioInit=true;
       
 
+      // Portrait idle morph + hover/tap override (super smooth)
+      (function(){
+        if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+        var portrait=document.querySelector('.portrait-idle');
+        if(!portrait)return;
+        var robot=portrait.querySelector('.portrait-robot');
+        if(!robot)return;
+        var idleTimer=null,isRobot=false;
+        function morph(toRobot,duration){
+          robot.style.transition='opacity '+duration+'ms ease-in-out';
+          robot.style.opacity=toRobot?'1':'0';
+          isRobot=toRobot;
+        }
+        function startIdle(){
+          stopIdle();
+          idleTimer=setInterval(function(){
+            morph(!isRobot,2800);
+          },7000);
+        }
+        function stopIdle(){if(idleTimer){clearInterval(idleTimer);idleTimer=null;}}
+        portrait.addEventListener('mouseenter',function(){stopIdle();morph(true,1400);});
+        portrait.addEventListener('mouseleave',function(){morph(false,1400);setTimeout(startIdle,2500);});
+        portrait.addEventListener('click',function(){
+          stopIdle();
+          morph(!isRobot,1400);
+          setTimeout(startIdle,4000);
+        });
+        startIdle();
+      })();
       var desktop=document.getElementById('desktop');
       var windows=Array.prototype.slice.call(document.querySelectorAll('.window'));
       var topZ=10;
