@@ -291,8 +291,10 @@
     #gallery-window{top:76px;left:calc(50% - 350px);width:700px;height:520px;z-index:8}
     #customize-window{top:82px;left:calc(50% - 245px);width:490px;height:500px;z-index:8}
 
-    .about-grid{display:grid;grid-template-columns:minmax(0,1fr) 132px;grid-template-areas:"label identity" "copy identity" "copy facts";grid-template-rows:auto auto auto;gap:0 22px;height:auto}
+    .about-grid{display:grid;grid-template-columns:minmax(0,1fr) 132px;grid-template-areas:"label sidebar" "copy sidebar" "copy sidebar";grid-template-rows:auto auto auto;gap:0 22px;height:auto}
     .about-copy{grid-area:copy;display:flex;flex-direction:column;justify-content:flex-start;min-width:0}
+    .about-sidebar{grid-area:sidebar;display:flex;flex-direction:column;gap:14px;min-width:0;align-self:start}
+    .about-identity{min-width:0}
     .file-label{grid-area:label;margin:0 0 18px;font:600 13px/1.5 var(--reading);color:var(--active-hi)}
     h1{margin:0;font:600 clamp(32px,3vw,44px)/1.12 var(--reading);letter-spacing:-.02em}
     h1 span{display:block;font-weight:400}
@@ -306,7 +308,7 @@
     .about-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:17px}
     .pixel-button{padding:8px 11px;background:var(--panel);cursor:pointer;font:700 12px/1.2 var(--reading);letter-spacing:.02em;text-decoration:none}
     .pixel-button:active,.swatch:active,.pattern-button[aria-pressed="true"],.motion-button[aria-pressed="true"]{border-color:var(--dark) var(--light) var(--light) var(--dark);background:var(--select);color:var(--select-ink);transform:translate(1px,1px)}
-    .about-identity{grid-area:identity;min-width:0}
+    .about-identity{min-width:0}
     .about-identity-copy{display:none}
     .portrait{position:relative;display:grid;place-items:center;min-height:170px;padding:12px;border:2px solid var(--ink);background:repeating-linear-gradient(45deg,#e6e6df 0 5px,#b9bbb4 5px 10px);overflow:hidden;text-align:center;color:var(--muted);font:12px/1.45 var(--reading)}
     .portrait::after{content:"PHOTO.TIF";position:absolute;right:4px;bottom:3px;padding:3px 5px;background:var(--ink);color:var(--paper);font:700 9px/1 var(--reading)}
@@ -315,11 +317,11 @@
     .portrait:has(> .portrait-img){padding:0;background:none!important;min-height:0}
     :root.theme-dark .portrait:has(> .portrait-img){background:none!important}
     .portrait:has(> .portrait-img) .portrait-img{height:auto;min-height:0;max-height:none;aspect-ratio:3/3.6}
-    .facts{grid-area:facts;margin:12px 0 0;font:12px/1.4 var(--reading)}
+    .about-sidebar .facts{margin:0;font:12px/1.4 var(--reading)}
     .facts div{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px dotted var(--mid)}
     .facts dt{color:var(--muted)}.facts dd{margin:0;font-weight:700;text-align:right}
     .expanded-panel{display:none}
-    .window.maximized .about-grid{grid-template-columns:minmax(0,1fr) 180px;grid-template-areas:"label identity" "copy identity" "copy facts" "expanded expanded";grid-template-rows:auto auto auto auto;align-content:start;gap:0 34px}
+    .window.maximized .about-grid{grid-template-columns:minmax(0,1fr) 180px;grid-template-areas:"label sidebar" "copy sidebar" "copy sidebar" "expanded expanded";grid-template-rows:auto auto auto auto;align-content:start;gap:0 34px}
     .window.maximized .about-copy{display:block}
     .window.maximized .about-copy p{max-width:720px}
     .window.maximized .about-links{margin-top:24px}
@@ -940,10 +942,11 @@
     @media(max-width:767px){
       #about-window .window-body,#skills-window .window-body,#contact-window .window-body{padding:16px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
 
-      #about-window .about-grid,#about-window.window.maximized .about-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"label" "identity" "copy" "facts" "background" "expanded";grid-template-rows:auto;gap:0;height:auto}
+      #about-window .about-grid,#about-window.window.maximized .about-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"label" "sidebar" "copy" "background" "expanded";grid-template-rows:auto;gap:0;height:auto}
       #about-window .file-label{grid-area:label;margin:0 0 10px;font-size:0;line-height:1.3;letter-spacing:.09em}
       #about-window .file-label::after{content:"ABOUT ME";font-size:10px}
-      #about-window .about-identity{grid-area:identity;display:grid;grid-template-columns:100px minmax(0,1fr);align-items:center;gap:14px;margin:0 0 18px;padding-bottom:18px;border-bottom:1px dotted var(--mid)}
+      #about-window .about-sidebar{grid-area:sidebar;display:flex;flex-direction:column;gap:0;margin:0 0 18px;padding-bottom:18px;border-bottom:1px dotted var(--mid)}
+      #about-window .about-identity{display:grid;grid-template-columns:100px minmax(0,1fr);align-items:center;gap:14px}
       #about-window .portrait,#about-window.window.maximized .portrait{width:100px;height:112px;min-height:0;padding:8px;object-fit:cover}
       #about-window .portrait:has(> .portrait-img),#about-window.window.maximized .portrait:has(> .portrait-img){padding:0;background:none!important;width:100px;height:112px;overflow:hidden}
       #about-window .portrait:has(> .portrait-img) .portrait-img{width:100%;height:100%;object-fit:cover;object-position:top center}
@@ -962,7 +965,7 @@
       #about-window .about-links .pixel-button:nth-child(2){grid-column:1/-1;grid-row:2}
       #about-window .about-links .pixel-button:nth-child(3){grid-column:2;grid-row:1}
       #about-window .about-links .pixel-button:active{box-shadow:1px 1px 0 rgba(0,0,0,.25);transform:translate(2px,2px)}
-      #about-window .facts{grid-area:facts;margin:22px 0 0;padding-top:16px;border-top:2px solid var(--ink);font-size:12px}
+      #about-window .about-sidebar .facts{margin:14px 0 0;padding-top:14px;border-top:1px dotted var(--mid);font-size:12px}
       #about-window .facts::before{content:"EDUCATION & BACKGROUND";display:block;margin:0 0 8px;color:var(--active-hi);font:700 10px/1.3 var(--reading);letter-spacing:.07em}
       #about-window .facts div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;padding:7px 0}
       #about-window .facts dd{text-align:left;overflow-wrap:anywhere}
