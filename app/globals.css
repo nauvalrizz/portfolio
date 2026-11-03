@@ -309,6 +309,7 @@
     .about-identity-copy{display:none}
     .portrait{position:relative;display:grid;place-items:center;min-height:170px;padding:12px;border:2px solid var(--ink);background:repeating-linear-gradient(45deg,#e6e6df 0 5px,#b9bbb4 5px 10px);overflow:hidden;text-align:center;color:var(--muted);font:12px/1.45 var(--reading)}
     .portrait::after{content:"PHOTO.TIF";position:absolute;right:4px;bottom:3px;padding:3px 5px;background:var(--ink);color:var(--paper);font:700 9px/1 var(--reading);z-index:3}
+    html[lang="id"] .portrait::after{content:"FOTO.TIF"}
     .portrait-idle{aspect-ratio:3/3.6}
     .portrait-idle .portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
     .portrait-idle .portrait-human{opacity:1;z-index:1}
