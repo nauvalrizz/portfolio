@@ -111,6 +111,7 @@
         translateTextNodes(language);
         translatePlaceholders(language);
         document.querySelectorAll('[data-language-toggle]').forEach(function(button){var isIndonesian=language==='id';button.setAttribute('aria-pressed',String(isIndonesian));button.textContent=button.classList.contains('quick-setting')?(isIndonesian?'LANGUAGE · EN':'BAHASA · ID'):(isIndonesian?'EN':'ID');button.setAttribute('aria-label',isIndonesian?'Switch to English':'Ganti ke Bahasa Indonesia');});
+        var cvButton=document.getElementById('cv-download');if(cvButton){cvButton.href=language==='id'?'/cv/CV-Nauval-Rizky-Ramadhan-ID.pdf':'/cv/CV-Nauval-Rizky-Ramadhan-EN.pdf';cvButton.title=tx('Download CV','Unduh CV');cvButton.setAttribute('aria-label',tx('Download CV','Unduh CV'));}
         if(skillCards&&skillStatus){updateSkillStatus();}
         if(systemButtons){syncSystemButtons();}
         if(saverHintNode){updateSaverHint();}
