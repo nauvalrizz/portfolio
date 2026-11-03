@@ -561,6 +561,13 @@
     .task-cv-button:hover{filter:brightness(1.13)}
     :root.theme-dark .task-cv-button{background:var(--icon-paper);color:var(--icon-ink)}
     @media(prefers-color-scheme:dark){:root:not(.theme-light) .task-cv-button{background:var(--icon-paper);color:var(--icon-ink)}}
+    .task-system-button[data-theme-toggle],.task-system-button[data-system-toggle]{display:flex;align-items:center;justify-content:center}
+    .task-system-button .chip-icon{width:17px;height:17px;flex:0 0 auto}
+    .task-system-button[data-theme-toggle][aria-pressed="true"] .chip-icon-moon{display:none}
+    .task-system-button[data-theme-toggle][aria-pressed="false"] .chip-icon-sun{display:none}
+    .task-system-button[data-system-toggle="sound"][aria-pressed="true"] .chip-icon-muted{display:none}
+    .task-system-button[data-system-toggle="sound"][aria-pressed="false"] .chip-icon-on{display:none}
+    .task-system-button[data-system-toggle="crt"][aria-pressed="false"] .chip-icon{opacity:.35}
     .interaction-layer{position:absolute;z-index:210;inset:0;overflow:hidden;pointer-events:none}.tap-pulse{position:absolute;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border:1px solid var(--select);box-shadow:0 0 0 1px rgba(17,18,15,.42);animation:tap-pulse .46s cubic-bezier(.15,.72,.28,1) forwards}.tap-pulse::before,.tap-pulse::after{content:"";position:absolute;left:50%;top:50%;background:var(--select);transform:translate(-50%,-50%)}.tap-pulse::before{width:18px;height:1px}.tap-pulse::after{width:1px;height:18px}@keyframes tap-pulse{0%{opacity:.82;transform:scale(.45) rotate(0)}70%{opacity:.32}100%{opacity:0;transform:scale(1.75) rotate(45deg)}}
     .konami-layer{position:absolute;z-index:260;inset:0;visibility:hidden;overflow:hidden;pointer-events:none;opacity:0;background:repeating-linear-gradient(90deg,rgba(17,18,15,.1) 0 1px,transparent 1px 24px),repeating-linear-gradient(0deg,rgba(255,253,245,.08) 0 1px,transparent 1px 24px)}
     .konami-layer.active{visibility:visible;opacity:1;animation:konami-layer-in .28s steps(4,end) both}

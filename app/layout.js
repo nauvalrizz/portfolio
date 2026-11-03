@@ -15,7 +15,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="theme-dark" suppressHydrationWarning>
+    <html lang="id" className="theme-dark" suppressHydrationWarning>
       <body>
         {children}
         <Script src="/js/portfolio.js?v=20261009c" strategy="afterInteractive" />

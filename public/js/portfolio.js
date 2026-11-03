@@ -35,7 +35,7 @@
       var desktop=document.getElementById('desktop');
       var windows=Array.prototype.slice.call(document.querySelectorAll('.window'));
       var topZ=10;
-      var currentLanguage='en';
+      var currentLanguage='id';
       var forcedTheme='dark';
       var translations={
         'Loading portfolio desktop…':'Memuat desktop portofolio…','Opening windows…':'Membuka jendela…','Ready.':'Siap.','Click an icon to open':'Klik ikon untuk membuka',
@@ -122,15 +122,15 @@
       }
       function applyTheme(theme){
         forcedTheme=theme;document.documentElement.classList.toggle('theme-dark',theme==='dark');document.documentElement.classList.toggle('theme-light',theme==='light');
-        document.querySelectorAll('[data-theme-toggle]').forEach(function(button){var dark=theme==='dark';button.setAttribute('aria-pressed',String(dark));button.textContent=button.classList.contains('quick-setting')?(currentLanguage==='id'?(dark?'TEMA · TERANG':'TEMA · GELAP'):(dark?'THEME · LIGHT':'THEME · DARK')):(dark?tx('LIGHT','TERANG'):tx('DARK','GELAP'));if(button.title){button.title=tx('Appearance: light / dark','Tampilan: terang / gelap');}button.setAttribute('aria-label',dark?(currentLanguage==='id'?'Gunakan tema terang':'Use light theme'):(currentLanguage==='id'?'Gunakan tema gelap':'Use dark theme'));});refreshCursorPalette();
+        document.querySelectorAll('[data-theme-toggle]').forEach(function(button){var dark=theme==='dark';button.setAttribute('aria-pressed',String(dark));if(button.classList.contains('quick-setting')){button.textContent=currentLanguage==='id'?(dark?'TEMA · TERANG':'TEMA · GELAP'):(dark?'THEME · LIGHT':'THEME · DARK');}if(button.title){button.title=tx('Appearance: light / dark','Tampilan: terang / gelap');}button.setAttribute('aria-label',dark?(currentLanguage==='id'?'Gunakan tema terang':'Use light theme'):(currentLanguage==='id'?'Gunakan tema gelap':'Use dark theme'));});refreshCursorPalette();
       }
       document.querySelectorAll('[data-language-toggle]').forEach(function(button){button.addEventListener('click',function(){applyLanguage(currentLanguage==='en'?'id':'en');});});
       document.querySelectorAll('[data-theme-toggle]').forEach(function(button){button.addEventListener('click',function(){applyTheme(forcedTheme==='light'?'dark':'light');});});
-      applyLanguage('en');applyTheme(forcedTheme);
+      applyLanguage('id');applyTheme(forcedTheme);
       var boot=document.getElementById('boot-screen');
       var bootStatus=document.getElementById('boot-status');
       function finishBoot(){desktop.classList.add('is-ready');boot.classList.add('is-leaving');setTimeout(function(){boot.classList.add('is-done');},840);}
-      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){boot.classList.add('is-done');desktop.classList.add('is-ready');}else{setTimeout(function(){bootStatus.textContent='Opening windows…';},340);setTimeout(function(){bootStatus.textContent='Ready.';},620);setTimeout(finishBoot,760);}
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){boot.classList.add('is-done');desktop.classList.add('is-ready');}else{setTimeout(function(){bootStatus.textContent=tx('Opening windows…','Membuka jendela…');},340);setTimeout(function(){bootStatus.textContent=tx('Ready.','Siap.');},620);setTimeout(finishBoot,760);}
       function focusWindow(win){if(!win){return;}topZ+=1;if(topZ>100){topZ=20;windows.forEach(function(w){w.style.zIndex=10;});}windows.forEach(function(item){item.classList.remove('is-focused');});document.querySelectorAll('.task-button').forEach(function(button){button.classList.remove('is-focused');});win.classList.add('is-focused');win.style.zIndex=topZ;var task=document.querySelector('.task-button[data-open="'+win.id+'"]');if(task){task.classList.add('is-focused');}}
       function syncTaskbarDensity(){var activeCount=document.querySelectorAll('.task-button.active').length;desktop.classList.toggle('taskbar-dense',window.innerWidth>=1024&&activeCount>4);}
       function setTask(id,visible){document.querySelectorAll('.task-button[data-open="'+id+'"]').forEach(function(button){button.classList.toggle('active',visible);});syncTaskbarDensity();}
@@ -430,7 +430,7 @@
           button.setAttribute('aria-pressed',String(enabled));
           button.setAttribute('aria-label',type==='crt'?(currentLanguage==='id'?(enabled?'Matikan efek CRT':'Nyalakan efek CRT'):(enabled?'Turn CRT effect off':'Turn CRT effect on')):(currentLanguage==='id'?(enabled?'Bisukan suara klik':'Nyalakan suara klik'):(enabled?'Mute click sounds':'Turn click sounds on')));
           if(button.classList.contains('system-button')){button.textContent=(type==='crt'?'CRT':(currentLanguage==='id'?'SUARA':'SOUND'))+' · '+(currentLanguage==='id'?(enabled?'NYALA':'MATI'):(enabled?'ON':'OFF'));}
-          if(button.classList.contains('task-system-button')){if(type==='sound'){button.textContent=tx('SND','SUARA');button.title=tx('SND: retro feedback on interactive clicks','SUARA: umpan balik retro pada klik interaktif');}else{button.title=tx('CRT: scanlines, vignette, and phosphor sweep','CRT: garis pindai, vignette, dan sapuan fosfor');}}
+          if(button.classList.contains('task-system-button')){button.title=type==='sound'?tx('SND: retro feedback on interactive clicks','SUARA: umpan balik retro pada klik interaktif'):tx('CRT: scanlines, vignette, and phosphor sweep','CRT: garis pindai, vignette, dan sapuan fosfor');}
         });
         if(systemStatusCopy){systemStatusCopy.firstChild.nodeValue=currentLanguage==='id'?(crtEnabled?'CRT nyala':'CRT mati')+' · '+(clickSoundEnabled?'suara klik nyala':'suara klik mati')+' · '+(typeof petEnabled==='undefined'||petEnabled?'pet nyala':'pet mati')+' · Saver: ':(crtEnabled?'CRT on':'CRT off')+' · '+(clickSoundEnabled?'click sound on':'click sound muted')+' · '+(typeof petEnabled==='undefined'||petEnabled?'pet on':'pet off')+' · Saver: ';}
       }
@@ -1468,6 +1468,11 @@
         hopoff:function(){petHopOff('drop');},
         speak:function(text){petSpeak(text);}
       };
+      /* Final language pass: a few DOM builders run after the initial applyLanguage
+         (mobile project views above) and create English source strings. Re-applying the
+         active language here makes a first visit boot in exactly the state a manual
+         toggle would produce, in whichever language is the default. */
+      applyLanguage(currentLanguage);
     }());
 
   
