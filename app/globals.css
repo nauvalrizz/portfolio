@@ -233,8 +233,8 @@
     .inset{border-top:2px solid var(--dark);border-left:2px solid var(--dark);border-right:2px solid var(--light);border-bottom:2px solid var(--light)}
 
     .shortcuts{position:absolute;z-index:2;top:24px;left:18px;display:grid;grid-template-columns:82px;gap:16px;width:82px}
-    .shortcut{display:grid;justify-items:center;gap:7px;width:82px;padding:4px 2px;background:transparent;cursor:pointer;text-align:center;color:var(--active-ink);font:700 11px/1.3 var(--reading);text-shadow:1px 1px 0 rgba(0,0,0,.7)}
-    .shortcut>span:last-child{padding:2px 4px;border:1px dotted transparent}
+    .shortcut{display:grid;justify-items:center;grid-template-rows:42px 29px;gap:7px;width:82px;padding:4px 2px;background:transparent;cursor:pointer;text-align:center;color:var(--active-ink);font:700 11px/1.3 var(--reading);text-shadow:1px 1px 0 rgba(0,0,0,.7)}
+    .shortcut>span:last-child{width:100%;height:29px;padding:2px 4px;border:1px dotted transparent;overflow:hidden;overflow-wrap:anywhere}
     .shortcut:hover>span:last-child,.shortcut:focus-visible>span:last-child{background:var(--active);border-color:var(--active-ink)}
     .shortcut:hover .icon,.shortcut:focus-visible .icon{transform:translateY(-2px)}
     .shortcut:active .icon{transform:translate(2px,2px)}
@@ -553,10 +553,10 @@
     .gallery-remove{position:absolute;top:4px;right:4px;width:24px;height:22px;background:var(--panel);cursor:pointer;font-weight:700}
 
     .wallpaper-section{margin-bottom:18px}.wallpaper-section h3{margin:0 0 8px;font:700 12px/1.3 var(--reading)}
-    .system-buttons{display:flex;flex-wrap:wrap;gap:6px}.system-button[aria-pressed="true"]{border-color:var(--dark) var(--light) var(--light) var(--dark);background:var(--select);color:var(--select-ink);transform:translate(1px,1px)}
-    .quick-settings{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 5px;border-bottom:1px dotted var(--mid)}.quick-setting{min-height:34px;padding:7px;background:var(--panel);cursor:pointer;font:700 9px/1.15 var(--reading);letter-spacing:.045em}.quick-setting[aria-pressed="true"]{background:var(--select);color:var(--select-ink);border-color:var(--dark) var(--light) var(--light) var(--dark)}
+    .system-buttons{display:flex;flex-wrap:wrap;gap:6px}.system-buttons .pixel-button{flex:0 0 auto;width:124px;text-align:center}.system-button[aria-pressed="true"]{border-color:var(--dark) var(--light) var(--light) var(--dark);background:var(--select);color:var(--select-ink);transform:translate(1px,1px)}
+    .quick-settings{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 5px;border-bottom:1px dotted var(--mid)}.quick-setting{min-height:34px;min-width:96px;padding:7px;background:var(--panel);cursor:pointer;font:700 9px/1.15 var(--reading);letter-spacing:.045em}.quick-setting[aria-pressed="true"]{background:var(--select);color:var(--select-ink);border-color:var(--dark) var(--light) var(--light) var(--dark)}
     .system-guide{display:grid;gap:6px;margin:10px 0 0}.system-guide div{display:grid;grid-template-columns:68px 1fr;gap:9px;padding:7px 8px;border-top:1px dotted var(--mid);color:var(--muted);font-size:10px;line-height:1.4}.system-guide b{color:var(--active-hi);letter-spacing:.035em}.system-status{display:flex;align-items:center;gap:8px;margin-top:9px;padding:7px 8px;background:rgba(255,255,255,.18);color:var(--muted);font-size:10px;line-height:1.4}.sound-meter{display:flex;align-items:end;gap:2px;height:12px}.sound-meter i{display:block;width:3px;height:5px;background:var(--active-hi);opacity:.32}.sound-meter i:nth-child(2){height:8px}.sound-meter i:nth-child(3){height:11px}.sound-meter.is-playing i{animation:sound-meter .34s steps(3,end) 2}.sound-meter.is-playing i:nth-child(2){animation-delay:.04s}.sound-meter.is-playing i:nth-child(3){animation-delay:.08s}@keyframes sound-meter{0%,100%{transform:scaleY(.35);opacity:.35}50%{transform:scaleY(1);opacity:1}}
-    .task-system{display:flex;align-items:center;gap:3px}.task-system-button{height:30px;min-width:43px;padding:0 7px;background:var(--panel);cursor:pointer;font:700 9px/1 var(--reading);letter-spacing:.04em}.task-system-button[aria-pressed="true"]{border-color:var(--dark) var(--light) var(--light) var(--dark);background:var(--select);color:var(--select-ink)}
+    .task-system{display:flex;align-items:center;gap:3px}.task-system-button{flex:0 0 auto;width:52px;height:30px;padding:0 2px;background:var(--panel);cursor:pointer;font:700 9px/1 var(--reading);letter-spacing:.04em;text-align:center}.task-system-button[aria-pressed="true"]{border-color:var(--dark) var(--light) var(--light) var(--dark);background:var(--select);color:var(--select-ink)}
     .interaction-layer{position:absolute;z-index:210;inset:0;overflow:hidden;pointer-events:none}.tap-pulse{position:absolute;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border:1px solid var(--select);box-shadow:0 0 0 1px rgba(17,18,15,.42);animation:tap-pulse .46s cubic-bezier(.15,.72,.28,1) forwards}.tap-pulse::before,.tap-pulse::after{content:"";position:absolute;left:50%;top:50%;background:var(--select);transform:translate(-50%,-50%)}.tap-pulse::before{width:18px;height:1px}.tap-pulse::after{width:1px;height:18px}@keyframes tap-pulse{0%{opacity:.82;transform:scale(.45) rotate(0)}70%{opacity:.32}100%{opacity:0;transform:scale(1.75) rotate(45deg)}}
     .konami-layer{position:absolute;z-index:260;inset:0;visibility:hidden;overflow:hidden;pointer-events:none;opacity:0;background:repeating-linear-gradient(90deg,rgba(17,18,15,.1) 0 1px,transparent 1px 24px),repeating-linear-gradient(0deg,rgba(255,253,245,.08) 0 1px,transparent 1px 24px)}
     .konami-layer.active{visibility:visible;opacity:1;animation:konami-layer-in .28s steps(4,end) both}
@@ -611,25 +611,28 @@
     .taskbar{position:absolute;z-index:100;left:0;right:0;bottom:0;display:flex;align-items:center;gap:5px;height:calc(46px + env(safe-area-inset-bottom));padding:5px 5px calc(5px + env(safe-area-inset-bottom));background:var(--panel);border-top:3px solid var(--light)}
     .desktop.taskbar-dense .taskbar{height:calc(76px + env(safe-area-inset-bottom))}
     .desktop.taskbar-dense .task-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,31px);align-content:center}
-    .desktop.taskbar-dense .task-button{height:31px;max-width:none;padding:0 8px;font-size:11px}
+    .desktop.taskbar-dense .task-button{height:31px;width:auto;flex:none;max-width:none;padding:0 8px;font-size:11px}
     .desktop.taskbar-dense .start-button,.desktop.taskbar-dense .clock{align-self:center}
     .desktop.taskbar-dense .window.maximized{bottom:calc(84px + env(safe-area-inset-bottom))!important}
     .start-button,.task-button{height:34px;background:var(--panel);cursor:pointer}
     .start-button{display:flex;align-items:center;gap:8px;padding:0 12px;font:700 13px/1 var(--reading)}
     .mark{display:grid;grid-template-columns:repeat(2,5px);gap:2px}.mark i{width:5px;height:5px;background:var(--active)}.mark i:nth-child(2),.mark i:nth-child(3){background:var(--select)}
     .task-buttons{display:flex;gap:5px;min-width:0;flex:1}
-    .task-button{display:none;min-width:0;max-width:180px;padding:0 13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left;font:600 13px/1 var(--reading)}
+    .task-button{display:none;flex:0 1 150px;width:150px;min-width:0;padding:0 13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left;font:600 13px/1 var(--reading)}
     .task-button.active{display:block;border-color:var(--dark) var(--light) var(--light) var(--dark)}
     .task-button.is-focused{background:var(--paper);box-shadow:inset 1px 1px 0 var(--mid)}
     .clock{padding:7px 11px;background:var(--dark);color:var(--select);font:700 12px/1 var(--reading);white-space:nowrap}
 
     @media(min-width:1181px){html,body{height:100%;overflow:hidden}}
-    @media(max-width:820px){.task-system{display:none}}
+    @media(max-width:820px){.task-system-button[data-system-toggle]{display:none}}
+    @media(max-width:640px){.task-system-button{width:48px}}
     @media(max-width:1180px){
       .desktop{height:auto;min-height:100vh;padding:86px 12px calc(66px + env(safe-area-inset-bottom));overflow:visible}
       .taskbar{position:fixed}
       .shortcuts{top:12px;left:10px;right:10px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;width:auto}
-      .shortcut{display:flex;width:auto;min-width:0;gap:5px;padding:4px 7px;font-size:10px;background:rgba(0,80,74,.68)}
+      .shortcut{display:flex;align-items:center;width:auto;min-width:0;gap:5px;padding:4px 7px;font-size:10px;background:rgba(0,80,74,.68)}
+      .shortcut .icon{flex:0 0 auto}
+      .shortcut>span:last-child{width:auto;height:auto;min-width:0;overflow-wrap:anywhere}
       .desktop-hint{top:54px;left:12px}
       .desktop-hint::before{content:"↑"}
       .icon{width:19px;height:18px;transform:scale(.45);transform-origin:center}
@@ -651,7 +654,7 @@
       .taskbar{display:flex;height:calc(42px + env(safe-area-inset-bottom));padding:4px 5px calc(4px + env(safe-area-inset-bottom));gap:4px}
       .taskbar .start-button{height:31px;padding:0 9px;font-size:11px}
       .taskbar .task-buttons{gap:4px}
-      .taskbar .task-button{height:31px;max-width:none;padding:0 8px;font-size:10px}
+      .taskbar .task-button{height:31px;width:auto;flex:0 1 auto;max-width:none;padding:0 8px;font-size:10px}
       .taskbar .clock{padding:6px 8px;font-size:10px}
       .window,#about-window,#projects-window,#skills-window,#contact-window,#terminal-window,#gallery-window,#customize-window{
         position:absolute;top:12px!important;right:10px!important;bottom:calc(124px + env(safe-area-inset-bottom))!important;left:10px!important;
@@ -699,7 +702,8 @@
       .mobile-dock{position:absolute;z-index:130;right:8px;bottom:calc(46px + env(safe-area-inset-bottom));left:8px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;height:70px;padding:5px;background:var(--panel);box-shadow:4px 4px 0 rgba(0,0,0,.42)}
       .desktop.is-ready .mobile-dock{opacity:1;transform:none;animation:none}
       @keyframes dock-arrive{0%{opacity:0;transform:translateY(74px)}72%{opacity:1;transform:translateY(-4px)}100%{opacity:1;transform:none}}
-      .mobile-nav-button{position:relative;display:grid;grid-template-rows:30px minmax(16px,auto);place-items:center;min-width:0;min-height:58px;padding:3px 2px;background:var(--panel);cursor:pointer;color:var(--ink);font:700 9px/1.05 var(--reading);text-align:center}
+      .mobile-nav-button{position:relative;display:grid;grid-template-rows:30px 19px;place-items:center;min-width:0;min-height:58px;padding:3px 2px;background:var(--panel);cursor:pointer;color:var(--ink);font:700 9px/1.05 var(--reading);text-align:center}
+      .mobile-nav-button>span:last-child{display:block;width:100%;height:19px;overflow:hidden;overflow-wrap:anywhere}
       .mobile-nav-button::after{content:"";position:absolute;right:7px;bottom:2px;left:7px;height:2px;background:transparent}
       .mobile-nav-button[aria-current="page"]{background:var(--active);color:var(--active-ink);border-color:var(--dark) var(--light) var(--light) var(--dark)}
       .mobile-nav-button[aria-current="page"]::after{background:var(--select);animation:dock-scan 1.8s steps(6,end) infinite}
